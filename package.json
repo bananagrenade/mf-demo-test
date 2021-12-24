@@ -1,5 +1,5 @@
 {
-  "name": "mf-demo-test",
+  "name": "wp5-starter-react",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --mode production",
