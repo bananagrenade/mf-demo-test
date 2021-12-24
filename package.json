@@ -22,7 +22,6 @@
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack --mode production",
-    "build:dev": "webpack --mode development",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist"
   }
