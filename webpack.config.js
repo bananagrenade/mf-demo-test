@@ -1,30 +1,34 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-module.exports = {
-  entry: './src/index',
-  cache: false,
-  devtool: 'source-map',
-  optimization: {
-    minimize: false,
-  },
+module.exports = (_, argv) => ({
   resolve: {
-    extensions: ['.jsx', '.js', '.json'],
+    extensions: [".jsx", ".js", ".json"],
   },
+
+  devServer: {
+    port: 8080,
+  },
+
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: require.resolve('babel-loader'),
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        options: {
-          presets: [require.resolve('@babel/preset-react')],
+        use: {
+          loader: "babel-loader",
         },
       },
     ],
   },
+
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
     }),
   ],
-};
+});
